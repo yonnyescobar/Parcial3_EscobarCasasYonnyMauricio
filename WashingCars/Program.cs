@@ -1,5 +1,9 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WashingCars.DAL;
+using WashingCars.DAL.Entities;
+using WashingCars.Helpers;
+using WashingCars.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,9 +17,22 @@ builder.Services.AddDbContext<DatabaseContext>(o =>
     o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-#endregion
+builder.Services.AddIdentity<User, IdentityRole>(io =>
+{
+    io.User.RequireUniqueEmail = true;
+    io.Password.RequireDigit = false;
+    io.Password.RequiredUniqueChars = 0;
+    io.Password.RequireLowercase = false;
+    io.Password.RequireNonAlphanumeric = false;
+    io.Password.RequireUppercase = false;
+    io.Password.RequiredLength = 6;
+
+}).AddEntityFrameworkStores<DatabaseContext>();
 
 builder.Services.AddTransient<SeederDb>();
+builder.Services.AddScoped<IUserHelper, UserHelper>();
+
+#endregion
 
 var app = builder.Build();
 
@@ -45,6 +62,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllerRoute(
     name: "default",
