@@ -31,6 +31,7 @@ builder.Services.AddIdentity<User, IdentityRole>(io =>
 
 builder.Services.AddTransient<SeederDb>();
 builder.Services.AddScoped<IUserHelper, UserHelper>();
+builder.Services.AddScoped<IDropDownListsHelper, DropDownListsHelper>();
 
 #endregion
 
@@ -58,11 +59,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
