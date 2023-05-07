@@ -9,6 +9,9 @@ namespace WashingCars.DAL.Entities
         [ForeignKey("Vehicle")]
         public Guid VehicleId { get; set; }
 
+        [Display(Name = "Vehículo")]
+        public Vehicle Vehicle { get; set; }
+
         [Display(Name = "Fecha de Ingreso")]
         public DateTime? CreationDate { get; set; }
 

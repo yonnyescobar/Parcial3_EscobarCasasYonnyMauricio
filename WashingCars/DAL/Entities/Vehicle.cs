@@ -9,6 +9,9 @@ namespace WashingCars.DAL.Entities
         [ForeignKey("Service")]
         public Guid ServiceId { get; set; }
 
+        [Display(Name = "Servicio")]
+        public Service Service { get; set; }
+
         [Display(Name = "Propietario")]
         [MaxLength(50, ErrorMessage = "El campo {0} debe ser de máximo {1} caracteres")]
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
@@ -18,6 +21,9 @@ namespace WashingCars.DAL.Entities
         [MaxLength(10, ErrorMessage = "El campo {0} debe ser de máximo {1} caracteres")]
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public string NumberPlate { get; set; }
+
+        [Display(Name = "Detalles")]
+        public ICollection<VehicleDetail> VehicleDetails { get; set; }
         #endregion
     }
 }

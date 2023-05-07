@@ -14,7 +14,10 @@ namespace WashingCars.DAL.Entities
         [Display(Name = "Precio")]
         [Range(0, 999999999)]
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
-        public decimal Price { get; set; }
+        public float Price { get; set; }
+
+        [Display(Name = "Vehículos")]
+        public ICollection<Vehicle> Vehicles { get; set; }
         #endregion
     }
 }
