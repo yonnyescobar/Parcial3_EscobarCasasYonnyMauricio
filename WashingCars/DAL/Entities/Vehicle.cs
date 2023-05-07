@@ -7,6 +7,7 @@ namespace WashingCars.DAL.Entities
     {
         #region properties
         [ForeignKey("Service")]
+        [Display(Name = "Tipo de lavado")]
         public Guid ServiceId { get; set; }
 
         [Display(Name = "Servicio")]

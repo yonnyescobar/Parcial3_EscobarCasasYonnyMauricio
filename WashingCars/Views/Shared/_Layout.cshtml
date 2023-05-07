@@ -25,16 +25,16 @@
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Client"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Servicios para su vehículo</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Vehicles" asp-action="Create">Servicios para su vehículo</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Estado de su servicio</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="VehicleDetails" asp-action="Details">Estado de su servicio</a>
                             </li>
                         }
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Servicios en proceso</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="VehicleDetails" asp-action="Index">Servicios en proceso</a>
                             </li>
                         }                
                         <li class="nav-item">
