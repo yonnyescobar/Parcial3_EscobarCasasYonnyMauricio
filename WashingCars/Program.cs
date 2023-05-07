@@ -1,7 +1,19 @@
+using Microsoft.EntityFrameworkCore;
+using WashingCars.DAL;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+#region dependencies
+
+builder.Services.AddDbContext<DatabaseContext>(o =>
+{
+    o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+#endregion
 
 var app = builder.Build();
 
